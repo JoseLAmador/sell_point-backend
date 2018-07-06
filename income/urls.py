@@ -1,4 +1,4 @@
-from .views import IncomeViewSet, UserViewSet
+from .views import IncomeViewSet, UserViewSet, ClienteViewSet
 
 from rest_framework import routers
 from django.conf.urls import url
@@ -8,6 +8,7 @@ router = routers.DefaultRouter()
 
 router.register('incomes', IncomeViewSet)
 router.register('users', UserViewSet)
+router.register('clientes', ClienteViewSet)
 
 app_name='income'
 

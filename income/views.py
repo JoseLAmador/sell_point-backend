@@ -1,8 +1,9 @@
 from django.contrib.auth.models import User
-from .models import Income
-from .serializers import IncomeSerializer, UserSerializer
+from .models import Income, Cliente
+from .serializers import IncomeSerializer, UserSerializer, ClienteSerializer
 from rest_framework import viewsets, permissions
 from .permissions import IsOwnerOrReadOnly
+from .pagination import ClientePagination
 
 
 class IncomeViewSet(viewsets.ModelViewSet):
@@ -17,3 +18,8 @@ class IncomeViewSet(viewsets.ModelViewSet):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+class ClienteViewSet(viewsets.ModelViewSet):
+    queryset = Cliente.objects.all()
+    serializer_class = ClienteSerializer
+    pagination_class = ClientePagination
