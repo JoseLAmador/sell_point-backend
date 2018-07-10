@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from income import urls as incomesUrls
+from expenses import urls as expensesUrls
 
 from django.conf.urls import url
 from accounts import urls as authUrls
@@ -27,6 +28,7 @@ urlpatterns = [
 
     path('api/auth/', include(authUrls, namespace='auth-urls')),
     path('api/incomes/', include(incomesUrls, namespace="incomes-urls")),
+    path('api/expenses/', include(expensesUrls, namespace="expenses-urls")),
 
     url(r'^api-auth/', include('rest_framework.urls')),
 ]

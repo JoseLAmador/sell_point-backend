@@ -7,10 +7,11 @@ class Cliente(models.Model):
     client = models.CharField(max_length=140, blank=True)
     address = models.CharField(max_length=140, blank=True)
     rfc = models.CharField(max_length=140, unique=True, blank=True)
-    email = models.EmailField(max_length=50, blank=True, unique=True)
+    email = models.EmailField(max_length=50, blank=True)
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,10}$',
                                  message="El número de teléfono debe ingresarse en el formato: '7751234567'. Hasta 10 dígitos permitidos.")
     phone_number = models.CharField(validators=[phone_regex], max_length=10, blank=True)
+    owner = models.ForeignKey('auth.User', related_name='clientes', on_delete=models.CASCADE, blank=True, null=True)
 
     class Meta:
         ordering = ["-id"]
